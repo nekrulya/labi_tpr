@@ -43,13 +43,7 @@ blocks = {
 }
 
 
-
-is_symm = input('Матрица симметричная? Да/Нет: ')
-
-if is_symm == 'Да':
-    fill_matrix_symmetrically()
-elif is_symm == 'Нет':
-    fill_matrix_asymmetrically()
+fill_matrix_asymmetrically()
 
 for row in matrix:
     print(row)
@@ -67,7 +61,7 @@ mytable.add_row(["6", str(matrix[5][6]), str(matrix[5][6]), "7"])
 print(mytable)
 
 fx["f5(x5) - 5"] = min(matrix[4][5] + fx["f6(x6) - 5"], matrix[4][6])
-fx["f5(x5) - 6"] = min(matrix[5][4] + fx["f6(x6) - 6"], matrix[5][6])
+fx["f5(x5) - 6"] = min(matrix[5][4] + fx["f6(x6) - 5"], matrix[5][6])
 
 mytable = PrettyTable()
 
@@ -83,7 +77,7 @@ else:
 
 mytable.field_names = ["x5", "x6 = 5", "x6 = 6", "x7 = 7", "f5(x5)", "x6*"]
 mytable.add_row(["5", "-", str(matrix[4][5] + fx["f6(x6) - 5"]), str(matrix[4][6]), str(fx["f5(x5) - 5"]), x_star['6* - 5']])
-mytable.add_row(["6", str(matrix[5][4] + fx["f6(x6) - 6"]), "-", str(matrix[5][6] ), str(fx["f5(x5) - 6"]), x_star['6* - 6']])
+mytable.add_row(["6", str(matrix[5][4] + fx["f6(x6) - 5"]), "-", str(matrix[5][6]), str(fx["f5(x5) - 6"]), x_star['6* - 6']])
 
 print(mytable)
 
@@ -128,14 +122,14 @@ mytable.add_row(["4", str(matrix[3][2] + fx["f4(x4) - 4"]), "-", str(matrix[3][4
 print(mytable)
 
 fx["f2(x2) - 1"] = min(matrix[0][2] + fx["f3(x3) - 3"], matrix[0][3] + fx["f3(x3) - 4"])
-fx["f2(x2) - 2"] = min(matrix[1][2] + fx["f3(x3) - 4"], matrix[3][4] + fx["f3(x3) - 4"])
+fx["f2(x2) - 2"] = min(matrix[1][2] + fx["f3(x3) - 3"], matrix[1][3] + fx["f3(x3) - 4"])
 
 if matrix[0][2] + fx["f3(x3) - 3"] < matrix[0][3] + fx["f3(x3) - 4"]:
     x_star['3* - 1'] = "3"
 else:
     x_star['3* - 1'] = "4"
 
-if matrix[1][2] + fx["f3(x3) - 4"] < matrix[3][4] + fx["f3(x3) - 4"]:
+if matrix[1][2] + fx["f3(x3) - 4"] < matrix[1][3] + fx["f3(x3) - 4"]:
     x_star['3* - 2'] = "3"
 else:
     x_star['3* - 2'] = "4"
@@ -166,10 +160,8 @@ else:
 mytable = PrettyTable()
 mytable.field_names = ["x1", "x2 = 2", "x2 = 3", "x2 = 4", "f1(x1)", "x2*"]
 mytable.add_row(["1", str(matrix[0][1] + fx["f2(x2) - 2"]), str(matrix[0][2] + fx["f3(x3) - 3"]), str(matrix[0][3] + fx["f3(x3) - 4"]), str(fx["f1(x1) - 1"]), x_star['2* - 1']])
-mytable.add_row(["2", "-", str(matrix[1][2] + fx["f3(x3) - 3"]), str(matrix[1][3] + fx["f3(x3) - 4"]), str(fx["f1(x1) - 2"]), x_star['2* - 2']])
+# mytable.add_row(["2", "-", str(matrix[1][2] + fx["f3(x3) - 3"]), str(matrix[1][3] + fx["f3(x3) - 4"]), str(fx["f1(x1) - 2"]), x_star['2* - 2']])
 
 print(mytable)
 
 print(f"Кратчайший путь: ")
-
-
